@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
         binding.list.layoutManager=LinearLayoutManager(this)
         val schedules=realm.where<Schedule>().findAll()
         val adapter=ScheduleAdapter(schedules)
-        binding .list.adapter=adapter
+        binding.list.adapter=adapter
 
         //ADDボタンを押した時の処理
         binding.button.setOnClickListener {
@@ -52,6 +52,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        //Inputボタンを押した時の処理
         binding.InputButton.setOnClickListener {
             val myedit = EditText(this)
             val dialog = AlertDialog.Builder(this)
