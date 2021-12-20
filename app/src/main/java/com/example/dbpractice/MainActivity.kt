@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
                 val maxId=db.where<Schedule>().max("id")
                 val nextId=(maxId?.toLong() ?:0L)+1L
                 val schedule=db.createObject<Schedule>(nextId)
-                val date="aaa"
+//                val date="aaa"
                 schedule.title="Title"
                 schedule.detail="Detail"
             }
