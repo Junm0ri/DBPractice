@@ -29,6 +29,7 @@ class MainActivity : AppCompatActivity() {
         val adapter=ScheduleAdapter(schedules)
         binding .list.adapter=adapter
 
+        //ボタンを押した時の処理
         binding.button.setOnClickListener {
             binding.textView.text="tapped"
             realm.executeTransaction { db:Realm->
@@ -38,6 +39,14 @@ class MainActivity : AppCompatActivity() {
                 schedule.name=binding.NameEdit.text.toString()
                 schedule.Kansei=binding.NumberEdit.text.toString()
             }
+        }
+
+        //アダプターのアイテムを押した時の処理
+        adapter.setOnItemClickListener { id ->
+            binding.textView.text=id.toString()
+            val schedule=realm.where<Schedule>().equalTo("id",id).findFirst()
+            val str = schedule?.name+schedule?.Kansei
+            binding.textView.text=str
         }
     }
 
