@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
         val adapter=ScheduleAdapter(schedules)
         binding .list.adapter=adapter
 
-        //ボタンを押した時の処理
+        //ADDボタンを押した時の処理
         binding.button.setOnClickListener {
             binding.textView.text="tapped"
             realm.executeTransaction { db:Realm->
@@ -38,6 +38,13 @@ class MainActivity : AppCompatActivity() {
                 val schedule=db.createObject<Schedule>(nextId)
                 schedule.name=binding.NameEdit.text.toString()
                 schedule.Kansei=binding.NumberEdit.text.toString()
+            }
+        }
+
+        //Deleteボタンを押した時の処理
+        binding.DeleteButton.setOnClickListener {
+            realm.executeTransaction { db:Realm->
+                db.where<Schedule>()?.findFirst()?.deleteFromRealm()
             }
         }
 
