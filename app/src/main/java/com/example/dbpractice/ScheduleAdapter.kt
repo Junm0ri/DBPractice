@@ -28,7 +28,7 @@ class ScheduleAdapter(data:OrderedRealmCollection<Schedule>):RealmRecyclerViewAd
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val schedule: Schedule? = getItem(position)
 //        holder.date.text= DateFormat.format("yyyy/MM/dd HH:mm", schedule?.date)
-        holder.title.text=schedule?.title
+        holder.title.text=schedule?.name
     }
 
     override fun getItemId(position: Int): Long {
